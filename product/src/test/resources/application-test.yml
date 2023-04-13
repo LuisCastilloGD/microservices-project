@@ -1,0 +1,7 @@
+catalog-application:
+  service:
+    url: http://localhost:9561
+
+eureka:
+  client:
+    enabled: false

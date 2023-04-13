@@ -1,0 +1,19 @@
+{
+  "id" : 1,
+  "uniqId": "abc1",
+  "sku": "group1",
+  "name_title": "Azul by Maxine of Hollywood Shirred-Front Spa 1-Piece Swimsuit",
+  "description": "Showcase your classic style at your next pool party or beachside getaway with our 1-piece knit swims",
+  "list_price": 103.94,
+  "sale_price": "60.42",
+  "category": "2-day deals",
+  "category_tree": "jcpenney|shops|2-day deals",
+  "average_product_rating": "4.3 out of 5",
+  "product_url": "Azul by Maxine of Hollywood Shirred-Front Spa 1-Piece Swimsuit",
+  "brand": "AZUL BY MAXINE OF HOLLYWOOD",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8083/product/getByUniqueId/abc1"
+    }
+  }
+}

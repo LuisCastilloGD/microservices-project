@@ -1,0 +1,10 @@
+{
+  "id" : 1,
+  "uniqId": "abc1",
+  "availability": 48,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8083/product/getByUniqueId/abc1"
+    }
+  }
+}
