@@ -29,33 +29,14 @@ public class ProductController {
 
     private final ProductAssembler productAssembler;
 
-    @CircuitBreaker(name = "productCB", fallbackMethod = "fallBackGetByUniqueId" )
     @GetMapping("/id/{uniqueId}")
     public ResponseEntity<EntityModel<ProductDto>> getByUniqueId(@PathVariable String uniqueId){
         return new ResponseEntity<>(productAssembler.toModel(productMapper.modelToDto(productService.getByUniqueId(uniqueId))),HttpStatus.OK);
     }
 
-    @CircuitBreaker(name = "productCB", fallbackMethod = "fallBackGetBySku")
     @GetMapping("/sku/{sku}")
     public List<ResponseEntity<EntityModel<ProductDto>>> getBySku(@PathVariable String sku){
         return productService.getBySku(sku).stream().map(productMapper::modelToDto).map(productAssembler::toModel).map(ResponseEntity::ok).toList();
     }
-
-    private ResponseEntity<EntityModel<ProductDto>> fallBackGetByUniqueId(@PathVariable String uniqueId,RuntimeException e){
-
-        if(e.getClass().equals(ProductNotFoundedException.class)){
-            throw new ProductNotFoundedException();
-        }if(e.getClass().equals(ProductNotAvailableException.class)) {
-            throw new ProductNotAvailableException();
-        }else{
-            return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
-        }
-    }
-
-
-    private List<ResponseEntity<EntityModel<ProductDto>>> fallBackGetBySku(@PathVariable String sku,RuntimeException e){
-        return List.of(new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE));
-    }
-
 
 }
