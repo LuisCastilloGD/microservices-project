@@ -1,27 +1,10 @@
-server:
-  port: 8085
+
 
 spring:
+  profiles:
+    active: "eureka-client"
   application:
     name: gateway-application
-
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enable: true
-#          lowerCaseServiceId: true
-#        routes:
-#         - id: product-route
-#           uri: http://localhost:8083/
-#           predicates:
-#             - Path=/product/getByUniqueId/**
-#             - Path=/product/getBySku/**
-#           filters:
-#             - RewritePath=/product/(?<path>.*), /$\{path}
-
-
-
 
 eureka:
   client:
