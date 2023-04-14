@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "inventory-application", configuration = CustomFeignConfiguration.class)
 public interface InventoryFeignClient {
 
-    @GetMapping("/inventory/quantity/{uniqueId}")
+    @GetMapping("/inventory/items/{uniqueId}")
     Item getItemByUniqueId(@PathVariable("uniqueId") String uniqueId);
 
 

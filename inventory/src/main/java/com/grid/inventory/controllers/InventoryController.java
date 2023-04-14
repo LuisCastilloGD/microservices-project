@@ -26,12 +26,12 @@ public class InventoryController {
     private final ItemAssembler itemAssembler;
 
 
-    @GetMapping("/quantity/{uniqueId}")
+    @GetMapping("/items/{uniqueId}")
     public EntityModel<ItemDto> getItemByUniqueId(@PathVariable String uniqueId){
         return itemAssembler.toModel(itemMapper.modelToDto(inventoryService.getItemByUniqueId(uniqueId)));
     }
 
-    @GetMapping("/quantity")
+    @GetMapping("/items")
     public List<EntityModel<ItemDto>> getItemsByUniqueIds(@RequestBody List<String> uniqueIds){
         return inventoryService.getItemsByUniqueIds(uniqueIds)
                                .stream()

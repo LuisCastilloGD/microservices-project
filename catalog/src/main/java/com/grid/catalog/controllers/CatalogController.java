@@ -25,12 +25,12 @@ public class CatalogController {
 
     private final ArticleAssembler articleAssembler;
 
-    @GetMapping("/get/uniqueId/{uniqueId}")
+    @GetMapping("/articles/id/{uniqueId}")
     public EntityModel<ArticleDto> getProductByUniqueId(@PathVariable String uniqueId){
         return articleAssembler.toModel(articleMapper.modelToDto(catalogService.getArticleByUniqueId(uniqueId)));
     }
 
-    @GetMapping("/get/sku/{sku}")
+    @GetMapping("/articles/sku/{sku}")
     public List<EntityModel<ArticleDto>> getProductBySku(@PathVariable String sku){
         return catalogService.getArticlesBySku(sku).stream().map(articleMapper::modelToDto).map(articleAssembler::toModel).toList();
     }

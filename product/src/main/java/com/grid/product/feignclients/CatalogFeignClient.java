@@ -11,10 +11,10 @@ import java.util.List;
 @FeignClient(name = "catalog-application", configuration = CustomFeignConfiguration.class)
 public interface CatalogFeignClient {
 
-    @GetMapping("/catalog/get/uniqueId/{uniqueId}")
+    @GetMapping("/catalog/articles/id/{uniqueId}")
     Article getProductByUniqueId(@PathVariable("uniqueId") String uniqueId);
 
-    @GetMapping("/catalog/get/sku/{sku}")
+    @GetMapping("/catalog/articles/sku/{sku}")
     List<Article> getProductBySku(@PathVariable("sku") String sku);
 
 }

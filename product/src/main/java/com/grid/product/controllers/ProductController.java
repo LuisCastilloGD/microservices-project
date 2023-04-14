@@ -30,13 +30,13 @@ public class ProductController {
     private final ProductAssembler productAssembler;
 
     @CircuitBreaker(name = "productCB", fallbackMethod = "fallBackGetByUniqueId" )
-    @GetMapping("/getByUniqueId/{uniqueId}")
+    @GetMapping("/id/{uniqueId}")
     public ResponseEntity<EntityModel<ProductDto>> getByUniqueId(@PathVariable String uniqueId){
         return new ResponseEntity<>(productAssembler.toModel(productMapper.modelToDto(productService.getByUniqueId(uniqueId))),HttpStatus.OK);
     }
 
     @CircuitBreaker(name = "productCB", fallbackMethod = "fallBackGetBySku")
-    @GetMapping("/getBySku/{sku}")
+    @GetMapping("/sku/{sku}")
     public List<ResponseEntity<EntityModel<ProductDto>>> getBySku(@PathVariable String sku){
         return productService.getBySku(sku).stream().map(productMapper::modelToDto).map(productAssembler::toModel).map(ResponseEntity::ok).toList();
     }
