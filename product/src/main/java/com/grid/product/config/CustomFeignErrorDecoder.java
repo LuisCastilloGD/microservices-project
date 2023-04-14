@@ -13,12 +13,8 @@ public class CustomFeignErrorDecoder implements ErrorDecoder {
 
         switch (response.status()) {
             case 404 -> {
-                log.error("Error in request went through feign client");
+                log.error("Not product Founded");
                 return new ProductNotFoundedException();
-            }
-            case 401 -> {
-                log.error("Unauthorized Request Through Feign");
-                return new Exception("Unauthorized Request Through Feign");
             }
             default -> {
                 log.error("Error in request went through feign client");
